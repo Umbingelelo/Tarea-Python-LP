@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import re
-import csv
 
 example = "INSERT INTO Estudiantes ( Nombre , Rut , Rol , Telefono , Edad ) VALUES ( ’ Sebastian Godinez ’ , ’19991933 -8 ’ , ’201673501 -1 ’ ,988881234 ,21) ;"
 
@@ -11,7 +10,7 @@ Inner = re.findall(r"INNER JOIN (\w*)",example)
 
 Order = re.findall(r"ORDER BY (\w*) (ASC|DESC)",example)
 
-Where = re.findall(r"WHERE (\w*)=(\w*) (AND|OR (\w*)=(\w*))*",example)#Falta que detecte los AND y FOR
+Where = re.findall(r"WHERE (\w*)=(\w*) AND|OR (\w*)=(\w*)",example)#Falta que detecte los AND y FOR
 
 #---------------------------------------------------------------
 
