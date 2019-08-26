@@ -12,7 +12,7 @@ def Select(Select_example):
 
     Order = re.findall(r"ORDER BY (\w*) (ASC|DESC)",Select_example)
 
-    Where = re.findall(r"(AND|OR)?\s?([a-zA-Z.]*)\s?=\s?\’?([a-zA-Z0-9-\s.]*)\’?",Select_example)#problema aca, no encuentra numeros
+    Where = re.findall(r"(AND|OR)?\s?(\w*)\s?=\s?(\’.+\’|\d*)",Select_example)#problema aca, no encuentra numeros
 
     print("Se seleccionara: ",Table)
     print("De la tabla: ",Select[0][1])
@@ -38,9 +38,9 @@ def Update(Update_example):
 
     Update = re.findall(r"UPDATE (\w*) SET (.*) WHERE (.*);",Update_example)
 
-    Update_set = re.findall(r"(\w*) =\s?\’?([a-zA-Z\s0-9]*)\’?",Update[0][1])
+    Update_set = re.findall(r"(\w*)\s?=\s?\’?([a-zA-Z\s0-9]*)\’?",Update[0][1])
 
-    Update_where = re.findall(r"(AND|OR)?\s?(\w*)\s?=\s?\’?([a-zA-Z0-9-]*)\’?",Update[0][2]) #Mismo error, los numeros
+    Update_where = re.findall(r"(AND|OR)?\s?(\w*)\s?=\s?(\’.+\’|\d*)",Update[0][2]) #Mismo error, los numeros
 
     print("La tabla a actualizar: ",Update[0][0])
     print("Set: ", Update_set)
