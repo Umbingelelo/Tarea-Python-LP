@@ -4,7 +4,7 @@ import re
 
 def Select(Select_example):
 
-    Select = re.findall(r"SELECT (.+) FROM ([a-zA-Z]*)",Select_example)
+    Select = re.findall(r"SELECT (.+) FROM ([a-zA-Z]*)\n?;",Select_example)
 
     Table = re.findall(r"(\w+|\*)",Select[0][0])
 
@@ -14,9 +14,7 @@ def Select(Select_example):
 
     Where = re.findall(r"(AND|OR)?\s?(\w*)\s?=\s?(\’.+\’|\d*)",Select_example)#problema aca, no encuentra numeros
 
-    print("Se seleccionara: ",Table)
-    print("De la tabla: ",Select[0][1])
-    print("La lista where: ",Where)
+    print("Se seleccionara: ",Select)
     #print("Ordenado por ",Order[0][0]," By ",Order[0][1])
 
 #---------------------------------------------------------------
